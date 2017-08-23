@@ -1,7 +1,7 @@
 #!/bin/bash
-#################################################
-#Cycle mysql service on multiple PCs via cygwin #
-#################################################
+######################################################
+#Cycle PC services on one or multiple PCs via cygwin #
+######################################################
 
 #Color Variables
 red=`tput setaf 1`
