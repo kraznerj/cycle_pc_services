@@ -57,10 +57,10 @@ do
 done
 }
 
-read -p "Would you like to cycle mysql on the PC? (y/n)" -n 1 answermysql
-echo ""
-read -p "Would you like to cycle ggsmgr as well? (y/n)" -n 1 answerggsmgr
-echo ""
+read -p "Would you like to cycle MYSQL on the PC? (y/n)" -n 1 answermysql
+echo "" #For formmatting purposes
+read -p "Would you like to cycle GGSMGR as well? (y/n)" -n 1 answerggsmgr
+echo "" #For formmatting purposes
 if [ $answermysql == "y" ] && [ $answerggsmgr == "y" ];
 then
         mysql_cycle
