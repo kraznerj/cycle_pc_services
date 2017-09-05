@@ -36,11 +36,13 @@ function mysql_cycle {
 service="mysql"
 for pc in ${argsPCs[@]}
 do
-  ssh $sshuser@$pc sc stop $service
+  ssh $sshuser@$pc << EOF
+  sc stop $service
   sleep 7
-  ssh $sshuser@$pc sc start $service
+  sc start $service
   sleep 5
-  ssh $sshuser@$pc sc query $service
+  sc query $service
+  EOF
 done
 }
 
@@ -49,11 +51,13 @@ function ggsmgr_cycle {
 service="ggsmgr"
 for pc in ${argsPCs[@]}
 do
-  ssh $sshuser@$pc sc stop $service
+  ssh $sshuser@$pc << EOF
+  sc stop $service
   sleep 7
-  ssh $sshuser@$pc sc start $service
+  sc start $service
   sleep 5
-  ssh $sshuser@$pc sc query $service
+  sc query $service
+  EOF
 done
 }
 
