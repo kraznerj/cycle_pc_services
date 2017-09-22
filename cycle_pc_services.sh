@@ -57,7 +57,7 @@ do
 done
 }
 
-
+COLUMNS=4
 PS3='What Services would you like to cycle? '
 options=("MySQL" "GGSMGR" "Both GGSMGR & MySQL" "Quit")
 select opt in "${options[@]}"
