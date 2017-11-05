@@ -41,7 +41,6 @@ function mysql_status {
 
   for pc in ${argsPCs[@]}
   do
-
     echo "Current Status: "$service_status
   done
   echo "Current Status: "$service_status
