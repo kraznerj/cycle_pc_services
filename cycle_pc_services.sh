@@ -31,6 +31,23 @@ argsPCs=( "$@" )
 #SSH user to use
 sshuser=SvcCOPSSH
 
+#Check Status of mysql
+function mysql_status {
+  #statements
+  service="mysql"
+  get_state=`sc query $service | grep -E STATE`
+  set -- $get_state
+  service_status=`echo $4`
+
+  for pc in ${argsPCs[@]}
+  do
+
+    echo "Current Status: "$service_status
+  done
+  echo "Current Status: "$service_status
+}
+
+
 #Will cycle mysql
 function mysql_cycle {
 service="mysql"
@@ -57,25 +74,41 @@ do
 done
 }
 
-COLUMNS=4
-PS3='What Services would you like to cycle? '
-options=("MySQL" "GGSMGR" "Both GGSMGR & MySQL" "Quit")
+COLUMNS=7
+#PS3='What Services would you like to cycle? '
+options=("Check MySQL Status" "Check GGSMGR Status" "Check Both MySQL & GGSMGR Status" "Cycle MySQL" "Cycle GGSMGR" "Cycle Both GGSMGR & MySQL" "Quit")
 select opt in "${options[@]}"
 do
 	case $opt in
-		"MySQL")
+    "Check MySQL Status")
+      mysql_status
+      echo ""
+      break
+      ;;
+
+    "Check GGSMGR Status")
+      echo ""
+      break
+      ;;
+
+    "Check Both MySQL & GGSMGR Status")
+      echo ""
+      break
+      ;;
+
+		"Cycle MySQL")
 			mysql_cycle
         		echo "${green}MySQL cycle complete${reset}"
 			      echo ""
             break
 			;;
-		"GGSMGR")
+		"Cycle GGSMGR")
 			ggsmgr_cycle
 			echo "${green}GGSMGR cycle complete${reset}"
 			echo ""
       break
 			;;
-		"Both GGSMGR & MySQL")
+		"Cycle Both GGSMGR & MySQL")
 			mysql_cycle
 			ggsmgr_cycle
 			echo ""
